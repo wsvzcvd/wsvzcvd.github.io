@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .top {
+            background-color: rgb(39, 38, 38);
+            height: 50px;
+            width: 100%;
+
+
+        }
+
+        .content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+
+        }
+
+        .toper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+
+            /* margin: 10px; */
+            /* background-color: #fa0; */
+            /* border: 1px solid red; */
+        }
+
+        .header .logo a {
+            text-decoration: none;
+            color: rgb(83, 83, 83);
+            font-size: 36px;
+            padding: 0px 15px;
+        }
+
+        .header .uler li {
+            list-style: none;
+            padding: 5px 15px;
+            width: fit-content;
+
+        }
+
+        .header .uler li a {
+            text-decoration: none;
+            color: #000000;
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            padding: 5px 0px;
+            position: relative;
+
+        }
+
+        .header .uler li a::after {
+            content: '';
+            background-color: #fa0;
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: 0px;
+            left: 0;
+            opacity: 0;
+            transition: 1s;
+        }
+
+        .header .uler li a:hover::after {
+            opacity: 1;
+        }
+
+        .top .toper .a i {
+            color: #fa0;
+        }
+
+        .top .toper .a span {
+            color: white;
+        }
+
+        .top .toper .icon a {
+            display: inline-block;
+            background-color: white;
+            border-radius: 50%;
+            color: black;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            font-size: 50%;
+        }
+
+        .top .toper .icon i {
+            padding-top: 4px;
+        }
+
+        .uler ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn a {
+            color: #fa0;
+            text-decoration: none;
+
+        }
+
+        .btn {
+            border: 3px solid #fa0;
+            padding: 10px 10px;
+        }
+
+        .btn:hover {
+            background-color: #7abee9;
+            border: 3px solid #7abee9;
+        }
+
+        .btn:hover a {
+            color: #ffffff;
+        }
+
+        .cat-title {
+            background-image: url(./asset\ 4.jpeg);
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .title {
+            /* border: 1px solid red; */
+            margin-left: 10%;
+            max-width: 1200px;
+        }
+
+        .title .title-content h1 {
+            color: #535353;
+            font-size: 28px;
+        }
+
+        .title .title-content h2 {
+            color: #7abee9;
+            font-size: 50px;
+        }
+
+        .title .title-content p {
+            color: #535353;
+            font-size: 18px;
+        }
+
+        .cat-title-a {
+            width: fit-content;
+            /* height: 10px; */
+            background-color: #fa0;
+            margin-top: 20px;
+            padding: 5px;
+            border: 2px solid #fa0;
+            transition: 1s;
+        }
+
+        .title-content {
+            line-height: 1.5;
+        }
+
+        .cat-title-a a {
+            text-decoration: none;
+            font-size: 13px;
+            color: #ffffff;
+
+        }
+
+        .cat-title-a:hover {
+            background-color: #000000;
+            border: 2px solid #000000;
+        }
+
+        .bodyer {
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .bodyer-content {
+            display: flex;
+
+            max-width: 1200px;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+
+        .bodyer-img {
+            /* border: 1px solid red; */
+            width: 50%;
+        }
+
+        .bodyer-img img {
+            width: 100%;
+        }
+
+        .bodyer .bodyer-text {
+            width: 50%;
+            line-height: 1.5;
+
+        }
+
+        .bodyer-text h3 {
+            color: #535353;
+            margin: 10px;
+        }
+
+        .bodyer-text p:first-of-type {
+            color: #7abee9;
+            margin: 10px;
+        }
+
+        .bodyer-text p {
+            color: #8d8d8d;
+            margin: 10px;
+        }
+
+        .bodyer-content .cat-title-a {
+            margin: 10px;
+        }
+
+        .card-content {
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+        }
+
+        .item1 {
+            background-image: url(./asset\ 5.jpeg);
+        }
+
+        .item2 {
+            background-image: url(./asset\ 6.jpeg);
+        }
+
+        .item3 {
+            background-image: url(./asset\ 7.jpeg);
+        }
+
+        .card {
+            width: 350px;
+            height: 500px;
+            background-size: cover;
+            margin-top: 50px;
+            /* position: relative; */
+        }
+
+        .card-text {
+            /* position: absolute; */
+            padding-top: 400px;
+            font-size: 30px;
+        }
+
+        .card-text a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer {
+            background: #f9f9f9;
+        }
+
+        .footer-content {
+            text-align: center;
+            display: block;
+            line-height: 1.5;
+            height: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #535353;
+        }
+
+        h3 {
+            color: #7abee9;
+        }
+
+        .footer-content h2 {
+            margin-top: 20px;
+            font-size: 40px;
+        }
+
+        .footer-content h3 {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="content">
+            <div class="toper">
+                <div class="a">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Toll-free:(123)456-7890</span>
+                </div>
+                <div class="icon">
+                    <a href=""><i class="fa-brands fa-pinterest"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="logo">
+            <img src="asset 0.png" alt="anilove">
+            <a href="">Anilove</a>
+        </div>
+        <div class="uler">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <a href="#">DONATE NOW!</a>
+        </div>
+    </div>
+
+    <div class="cat-title">
+        <div class="title">
+            <div class="title-content">
+                <h1>Animals Need</h1>
+                <h2>YOUR Help!</h2>
+                <p>You can chip in with money & effort!</p>
+                <div class="cat-title-a">
+                    <a href="#">DONATE NOW!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bodyer">
+        <div class="bodyer-content">
+            <div class="bodyer-img">
+                <img src="asset 1.jpeg" alt="">
+            </div>
+            <div class="bodyer-text">
+                <h3>About Us</h3>
+                <p>What Makes Us Care About Pets?</p>
+                <p>If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by domestic
+                    animals and pets all the time till she went to college – there might have been no Anilove animal
+                    shelter now. So as soon as she graduated with her Veterinary degree 12 years ago, she already knew
+                    what she will be doing for a living.
+                </p>
+                <p>All in all, with thousands of animals saved off the streets and cared for every year, we hope to
+                    encourage much more pet adoptions to happen!</p>
+                <div class="cat-title-a">
+                    <a href="#">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <h2>How You Can Help</h2>
+            <h3>There Are Countless Ways You Can Join In & Help Us!</h3>
+            <div class="card-content">
+                <div class="card item1">
+                    <div class="card-text"><a href="#">Volunteer</a></div>
+
+                </div>
+                <div class="card item2">
+                    <div class="card-text"><a href="#">Adopt</a></div>
+
+                </div>
+
+                <div class="card item3">
+                    <div class="card-text"><a href="#">Sponsor</a></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
