@@ -1,0 +1,160 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.outer {
+    margin-top: 150px;
+}
+
+
+.grey {
+    background-color: #f4f4f4;
+    width: 439px;
+    height: 290px;
+}
+
+.point {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    margin: auto;
+    max-width: 960px;
+    position: relative;
+    margin-bottom: 200px;
+}
+
+.main {
+    position: relative;
+    top: -190px;
+    right: 100px;
+}
+
+.text-title {
+    width: 355px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.main img {
+    vertical-align: middle;
+}
+
+.number {
+    background-color: #bb0404;
+    display: flex;
+    align-items: center;
+    line-height: 0.7;
+}
+
+.number h1 {
+    color: white;
+    font-size: 52px;
+    font-weight: 100;
+    
+}
+
+.number span {
+    writing-mode: vertical-lr;
+    font-size: 125px;
+    /* font-weight: 1; */
+    color: white;
+}
+
+.word {
+    background-color: black;
+    padding: 20px;
+    line-height: 2;
+}
+
+.word h2 {
+    color: white;
+}
+
+.word p {
+    color: white;
+}
+
+.content {
+    background-color: #eeeeee;
+    position: absolute;
+    bottom: -5%;
+    left: 10%;
+    padding: 20px;
+    width: 630px;
+    line-height: 1.5;
+}
+
+.content h3{
+    color: #bb0404;
+    display: flex;
+    /* flex-grow: 0; */
+}
+
+.content h3::after {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: #bb0404;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+    flex-grow: 1;
+}
+.content h4{
+    background-color: black;
+    width: fit-content;
+    color: white;
+    padding: 5px;
+    
+}
+.content p::before{
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    transform: scale(0.2);
+    background-color: #bb0404;
+}
+.content p{
+    padding-left: 1em;
+    text-indent: -1em;
+    margin: 1px;
+}
+.icon{
+    position: absolute;
+    top: 300px;
+    right: 82px;
+}
+.icon i{
+    color: red;
+    font-size: 50px;
+}
+.point:nth-child(2n){
+    flex-direction: row;
+}
+.point:nth-child(even) .text-title{
+    left: 500px;
+    top: -80px;
+}
+.point:nth-child(even) .grey{
+    position: relative;
+    left: 200px;
+}
+.point:nth-child(even) .icon{
+    left: -40px;
+}
+.point:nth-child(even) .main{
+    left: 0;
+}
+.point:nth-child(even) .content{
+    left: 290px;
+    bottom: 100px;
+}
+.point:last-child .content{
+    bottom: 50px;
+}
