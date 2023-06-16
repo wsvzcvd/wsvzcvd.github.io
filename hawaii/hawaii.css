@@ -34,11 +34,12 @@ a {
     object-fit: cover;
     height: 230px;
 }
-
+.group-content{
+    padding: 0px;
+}
 .group-title {
     margin-left: 10px;
     font-size: 12px;
-
 }
 
 .group-info a {
@@ -46,11 +47,6 @@ a {
     color: #f65936;
     font-size: 13px;
 }
-
-.group-content {
-    width: 100%;
-}
-
 .motif-text {
     width: 100%;
     padding: 15px;
@@ -78,7 +74,7 @@ a {
 }
 
 .card {
-    width: 47%;
+    width: 50%;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -90,12 +86,10 @@ a {
 }
 
 .card .card-img img {
-    max-height: 20%;
-    height: 100px;
+    aspect-ratio : 3 / 2 ;
     border-radius: 10px;
     object-fit: cover;
 }
-
 .card .card-text {
     padding: 14px 0px;
     font-size: 13px;
@@ -116,6 +110,17 @@ a {
 .card .card-title {
     overflow: hidden;
     white-space: nowrap;
+    position: relative;
+}
+.card .card-title span::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 4em;
+    background-image: linear-gradient(270deg,#fff, transparent);
+
 }
 
 .motif-pic span {
@@ -123,32 +128,26 @@ a {
 }
 
 @media screen and (min-width: 768px) {
-    .container {
+    .card-book {
         display: flex;
     }
-
-    .group-content {
-        width: 50%;
-    }
-
-    .card-container {
-        width: 50%;
-    }
-
     .motif-text {
         display: flex;
     }
 
-    .container:nth-of-type(4n){
+    .card-book:nth-of-type(4n){
         flex-direction: row-reverse;
     }
     .motif-text .title{
-        width: 50%;
+        width: 49%;
     }
     .motif-text .title-text{
-        width: 50%;
+        width: 49%;
     }
     img{
         border-radius: 10px;
+    }
+    .group-content{
+        padding: 10px;
     }
 }
