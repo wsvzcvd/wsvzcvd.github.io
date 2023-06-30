@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="grid.css">
+    
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .col-12 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            width: 70px;
+        }
+
+        .input {
+            width: 120px;
+        }
+
+        body {
+            background-color: antiquewhite;
+        }
+
+        .text-input {
+            background-color: white;
+            width: 200px;
+            height: 200px;
+            margin: 10px auto;
+            overflow: auto;
+        }
+
+        .title {
+            margin: 10px 0px;
+        }
+
+        .input {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="title">
+                    <h1>1A2B遊戲</h1>
+                </div>
+                <button class="start">開始</button>
+                <button class="again">放棄重來</button>
+                <button class="QA">看答案</button>
+                <div class="text-input">
+
+                </div>
+                <div>
+                    <input type="text" placeholder="請輸入數字" class="input">
+                    <button class="guess">猜</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="1A2B.js"></script>
+</body>
+
+</html>
