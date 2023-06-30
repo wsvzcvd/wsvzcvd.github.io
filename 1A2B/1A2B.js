@@ -66,6 +66,10 @@ function win(inputnum) {
     }
     if (A == numberstring.length) {
         alert(`您猜中了`)
+        start.disabled = false
+        again.disabled = true
+        QA.disabled = true
+        input.disabled = true
     }
     else {
         textinput.innerText += `${inputnum} --- ${A}A ${B}B \n`
@@ -83,7 +87,7 @@ function isRepeat(num) {
     return false;
 }
 
-function  restart(){
+function restart() {
     textinput.innerText = ""
     start.disabled = false
     again.disabled = true
