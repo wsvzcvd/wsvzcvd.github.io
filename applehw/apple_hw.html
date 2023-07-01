@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>apple</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: SF Pro TC, SF Pro Text, SF Pro Icons, PingFang TC, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+
+        .container {
+            padding-top: 40px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            vertical-align: top;
+        }
+
+        .btns {
+            border: 1px solid #eee;
+            width: 48%;
+
+        }
+
+        span {
+            color: #86868b;
+        }
+
+        .row {
+            justify-content: space-between;
+        }
+
+        .pic-circle {
+            width: 22%;
+            padding-bottom: 5px;
+        }
+
+        .storage .btns {
+            font-size: 10px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 550;
+        }
+
+        .storage .GB {
+            color: black;
+            font-size: 14px;
+        }
+
+        .card {
+            padding: 12px 10px;
+            margin: 5px 0;
+            border: 1px solid #eee;
+            background-color: #eee;
+        }
+
+        .wifibtn {
+            border: 1px solid #eee;
+        }
+
+        .pic {
+            top: 30px;
+        }
+
+        .wifi button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-7 ">
+                <div class="pic position-sticky">
+                    <img src="gray.jpg" alt="" id="main-pic">
+                </div>
+            </div>
+            <div class="col-12 col-md-4 row gap-2">
+                <div>
+                    <h2 class="col-12">外觀。 <span>挑選喜愛的顏色。</span></h2>
+                    <button class="btn btns color" id="gray.jpg">
+                        <div class="pic-circle mx-auto"><img src="gray.png" alt=""></div>
+                        <div class="card-body">太空灰色</div>
+                    </button>
+                    <button class="btn btns color" id="blue.jpg">
+                        <div class="pic-circle mx-auto"><img src="blue.png" alt=""></div>
+                        <div class="card-body">藍色</div>
+                    </button>
+                    <button class="btn btns mt-2 color" id="rose.jpg">
+                        <div class="pic-circle mx-auto"><img src="rose.png" alt=""></div>
+                        <div class="card-body">粉紅色</div>
+                    </button>
+                    <button class="btn btns mt-2 color" id="purple.jpg">
+                        <div class="pic-circle mx-auto"><img src="purple.png" alt=""></div>
+                        <div class="card-body">紫色</div>
+                    </button>
+                    <button class="btn btns mt-2 color" id="silver.jpg">
+                        <div class="pic-circle mx-auto"><img src="silver.png" alt=""></div>
+                        <div class="card-body">星光色</div>
+                    </button>
+                </div>
+                <div class="storage">
+                    <h2>儲存裝置。 <span>選擇需要的儲存空間大小。</span></h2>
+                    <button class="btn btns text-center w-48" id="18900">
+                        <h3>64 <span class="GB">GB</span></h3>
+                        <p>NT$18,900 起</p>
+                    </button>
+                    <button class="btn btns text-center w-48" id="23900">
+                        <h3>256 <span class="GB">GB</span></h3>
+                        <p>NT$23,900 起</p>
+                    </button>
+                    <div class="card">
+                        <h3>不確定需要多少儲存空間？</h3>
+                        <p>你的 iPad Air 儲存空間愈大， 你就有愈多空間儲存數位內容，滿足今日所需，也滿足未來需求。</p>
+                    </div>
+                </div>
+                <div class="wifi">
+                    <button class="btn wifibtn d-flex align-center align-items-center " id="18900">
+                        <div>
+                            <h3>Wi-Fi</h3>
+                            <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。</p>
+                        </div>
+                        <div class="text-center ">
+                            <p>NT$18,900起</p>
+                        </div>
+                    </button>
+                    <button class="btn wifibtn d-flex align-center align-items-center" id="23900">
+                        <div>
+                            <h3>Wi-Fi</h3>
+                            <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。</p>
+                        </div>
+                        <div class="text-center ">
+                            <p>NT$23,900起</p>
+                        </div>
+                    </button>
+                    <div class="card">
+                        <h3>想要進一步了解 Wi-Fi + 行動網路機型？</h3>
+                        <p>如果現場沒有可供使用的 Wi-Fi，Wi-Fi + 行動網路機型可讓你透過行動網路數據方案保持連線。 購買 Wi-Fi + 行動網路機型後，需要設定行動網路連線。</p>
+                    </div>
+                </div>
+                <div class="total">
+                    <h2>$</h2>
+                    <p>含營業稅和其他法定稅費</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="apple_hw.js"></script>
+</body>
+
+</html>
