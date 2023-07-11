@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .row .DayOfWeek div {
+            width: calc(100% / 7);
+        }
+
+        .daygrid div {
+            width: calc(100% / 7);
+            height: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="calendar-title d-flex justify-content-center mt-5">
+            <div class="year fs-1">{}</div>
+            <div class="month fs-1">{}</div>
+        </div>
+        <div class="allbtns text-end mt-4 mb-3 ">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button onclick="last()" type="button" class="btn btn-outline-primary" id="lastmonth">上個月</button>
+                <button onclick="now()" type="button" class="btn btn-outline-primary " id="today">這個月</button>
+                <button onclick="next()" type="button" class="btn btn-outline-primary" id="nextmonth">下個月</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="DayOfWeek d-flex flex-wrap  text-center">
+                <div class="sun border fw-bold border-dark-subtle">星期日</div>
+                <div class="tue border fw-bold border-dark-subtle">星期一</div>
+                <div class="mon border fw-bold border-dark-subtle">星期二</div>
+                <div class="wed border fw-bold border-dark-subtle">星期三</div>
+                <div class="thur border fw-bold border-dark-subtle">星期四</div>
+                <div class="fri border fw-bold border-dark-subtle">星期五</div>
+                <div class="sat border fw-bold border-dark-subtle">星期六</div>
+            </div>
+            <div class="daygrid d-flex flex-wrap mb-5">
+                <!-- <div class="border border-dark-subtle">1</div>
+                <div class="border border-dark-subtle">1</div> -->
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addModalLabel">新增行程</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">日期</span>
+                            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1" id="input-today" disabled>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">內容</span>
+                            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1" id="inputtext">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary" id="addbtn">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editModalLabel">編輯行程</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">日期</span>
+                            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1" id="edit-today" disabled>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">內容</span>
+                            <input type="text" class="form-control" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1" id="edittext">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                        <button type="button" class="btn btn-primary" id="editdel">刪除</button>
+                        <button type="button" class="btn btn-primary" id="editbtn">修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        //宣告
+        let today = new Date()//當天日期
+        let year = today.getFullYear()//今年的年份
+        let month = today.getMonth()//今年的月份
+        let day = today.getDay() //今天星期幾
+        let date = today.getDate()//今天幾號
+        let firstweek = new Date(year, month, 1)
+        let firstday = firstweek.getDay()
+        let lastDay = new Date(year, month + 1, 0).getDate()
+        let currentTodoIndex;
+        const myModal = new bootstrap.Modal('#addModal', {
+            keyboard: false
+        })
+        const editModal = new bootstrap.Modal('#editModal', {
+            keyboard: false
+        })
+
+        //DOM
+        let yeartitle = document.querySelector(".year")
+        let monthtitle = document.querySelector(".month")
+        let daygrid = document.querySelector(".daygrid")
+        let lastMonthBtn = document.getElementById("#lastmonth")
+        let todayBtn = document.getElementById("#today")
+        let nextMonthBtn = document.getElementById("#nextmonth")
+        let inputToday = document.getElementById("input-today")
+        let inputtext = document.getElementById("inputtext")
+        let addbtn = document.getElementById("addbtn")
+        let edittoday = document.getElementById("edit-today")
+        let edittext = document.getElementById("edittext")
+        let editbtn = document.getElementById("editbtn")
+        let editdel = document.getElementById("editdel")
+
+
+        //方法
+        function renderCalendar() {
+            daygrid.innerHTML = ''
+            yeartitle.innerHTML = `${year}年`
+            monthtitle.innerHTML = `${month + 1}月`
+            firstweek = new Date(year, month, 1)
+            firstday = firstweek.getDay()
+            lastDay = new Date(year, month + 1, 0).getDate()
+
+            for (let i = 0; i < firstday; i++) {
+                let grid = document.createElement('div')
+                grid.setAttribute("class", "border border-dark-subtle text-body-tertiary")
+                let lastMonth = new Date(year, month, 0).getDate()
+                grid.innerText = `${lastMonth - firstday + i + 1}`
+                daygrid.append(grid)
+            }
+            //這個月的日期
+            for (let j = 1; j <= lastDay; j++) {
+                let grid = document.createElement('div')
+                grid.setAttribute("class", "box border border-dark-subtle")
+                grid.textContent = j
+                grid.style.cursor = 'pointer'
+                grid.addEventListener("click", function () {
+                    inputToday.value = `${year}-${month + 1}-${j}`
+                    inputtext.value = ''
+                    myModal.show()
+
+                })
+                let key = `${year}-${month + 1}-${j}`
+                let note = getLocalStorage(key)
+                if (note != null) {
+                    let ul = document.createElement("ul")
+                    note.forEach((x, index) => {
+                        let li = document.createElement("li")
+                        li.innerText = x
+                        li.addEventListener("click", function (event) {
+                            event.stopPropagation()
+                            currentTodoIndex = index
+                            edittoday.value = `${year}-${month + 1}-${j}`
+                            edittext.value = x
+                            editModal.show()
+
+                        })
+
+                        ul.append(li)
+                    });
+                    grid.append(ul)
+                }
+                daygrid.append(grid)
+            }
+            if (lastDay + firstday <= 35) {
+                for (let i = 0; i < 35 - lastDay - firstday; i++) {
+                    let grid = document.createElement('div')
+                    grid.setAttribute("class", "border border-dark-subtle text-body-tertiary")
+                    grid.textContent += i + 1
+                    daygrid.append(grid)
+                }
+            } else if (lastDay + firstday < 42) {
+                for (let i = 0; i < 42 - lastDay - firstday; i++) {
+                    let grid = document.createElement('div')
+                    grid.setAttribute("class", "border border-dark-subtle text-body-tertiary")
+                    grid.textContent += i + 1
+                    daygrid.append(grid)
+                }
+            }
+        }
+        //事件
+        addbtn.addEventListener('click', function () {
+            addTodoItem()
+
+        })
+        editbtn.addEventListener("click", function () {
+            editTodoItem()
+        })
+        editdel.addEventListener("click", function () {
+            editdelItem()
+        })
+        //上個月方法
+        function last() {
+            month--
+            if (month < 0) {
+                month = 11
+                year--
+            }
+            renderCalendar()
+        }
+        //這個月方法
+        function now() {
+            year = today.getFullYear()
+            month = today.getMonth()
+
+            yeartitle.innerHTML = `${year}年`
+            monthtitle.innerHTML = `${month + 1}`
+            renderCalendar()
+        }
+
+        //下個月方法
+        function next() {
+            month++
+            if (month > 11) {
+                month = 0
+                year++
+            }
+            renderCalendar()
+        }
+
+        //新增行程
+        function addTodoItem() {
+            let data = inputToday.value
+            let todo = inputtext.value
+            if (todo == '') {
+                return
+            }
+            //取得localStorage.代辦事項
+            let todoList = localStorage.getItem(data)
+            if (todoList == null) {
+                todoList = [todo]
+            }
+            else {
+                todoList = JSON.parse(todoList)
+                todoList.push(todo)
+            }
+            localStorage.setItem(data, JSON.stringify(todoList))
+            myModal.hide()
+            renderCalendar()
+        }
+        //編輯行程
+        function editTodoItem() {
+            let data = edittoday.value
+            let todo = edittext.value
+            let todoList = JSON.parse(localStorage.getItem(data))
+            todoList[currentTodoIndex] = todo
+
+            localStorage.setItem(data, JSON.stringify(todoList))
+            editModal.hide()
+            renderCalendar()
+        }
+        //刪除行程
+        function editdelItem() {
+            let data = edittoday.value
+
+            let todoList = JSON.parse(localStorage.getItem(data))
+            todoList.splice(currentTodoIndex, 1)
+            localStorage.setItem(data, JSON.stringify(todoList))
+            editModal.hide()
+            renderCalendar()
+
+        }
+        //取得 localstorage 資料
+        function getLocalStorage(key) {
+            // let key = JSON.parse(`${year}-${month}-${jday}`)
+            let data = JSON.parse(localStorage.getItem(key))
+            return data
+        }
+        //window.onload
+        window.onload = function () {
+            renderCalendar()
+        }
+    </script>
+</body>
+
+</html>
