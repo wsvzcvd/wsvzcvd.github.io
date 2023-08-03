@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>todolist demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:wght@100&family=Varela+Round&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    * {
+        font-family: 'Quicksand', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Varela Round', sans-serif;
+    }
+
+    .btn {
+        white-space: nowrap;
+        background-color: #e9edc9;
+    }
+
+    body {
+        background-color: #fefae0;
+    }
+
+    .btn:hover {
+        background-color: #ccd5ae;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="input-group my-4">
+                <input type="text" class="form-control" placeholder="todo..." aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" id="title">
+                <button class="btn btn-add" id="basic-addon2">新增</button>
+            </div>
+            <div class="row" id="row">
+                <!-- <div class="border d-flex p-4 align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Checkbox">
+                        <label class="form-check-label" for="Checkbox"></label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control me-4" aria-describedby="basic-addon1" id="input"
+                            disabled>
+                    </div>
+                    <button type="button" class="btn me-1" id="edit-btn1">編輯</button>
+                    <button type="button" class="btn me-1 d-none" id="edit-btn2">保存</button>
+                    <button type="button" class="btn me-1" id="out">刪除</button>
+                </div> -->
+                <!-- <div class="border d-flex p-4 align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Checkbox">
+                        <label class="form-check-label" for="Checkbox"></label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control me-4" aria-describedby="basic-addon1" readonly
+                            id="input">
+                    </div>
+                    <button type="button" class="btn me-1" id="edit-btn1">編輯</button>
+                    <button type="button" class="btn me-1 d-none" id="edit-btn2">保存</button>
+                    <button type="button" class="btn me-1" id="edit-btn3">刪除</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        //宣告
+        let todotitle;
+        let array = [];
+        let key = 'yu'
+        //DOM
+        let addBtn = document.querySelector('.btn-add');
+        let listbox = document.getElementById('row')
+        let title = document.getElementById('title')
+        //方法
+        function renderToDoList() {
+            //清空
+            listbox.innerHTML = ''
+            //長(local)
+            if (localStorage.getItem(key) != null) {
+                array = JSON.parse(localStorage.getItem(key))
+            }
+
+            array.forEach((obj) => {
+                let che = obj.check ? "checked" : "";
+                let list = document.createElement('div')
+                list.setAttribute("class", "border d-flex p-4 align-items-center mb-4");
+                list.setAttribute("id", `${obj.iD}`)
+                list.innerHTML = `
+                    <div class="form-check">
+                        <input class="form-check-input" onclick="checkbtn(${obj.iD})" ${che} type="checkbox" >
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control me-4" aria-describedby="basic-addon1" 
+                            id="input" value="${obj.text}" disabled>
+                    </div>
+                    <button type="button" onclick="editbtn(${obj.iD})" class="btn btn-edit me-1">編輯</button>
+                    <button type="button" onclick="savebtn(${obj.iD})" class="btn btn-save me-1 d-none">保存</button>
+                    <button type="button" class="btn me-1" onclick="removebtn(${obj.iD})">刪除</button>`
+                listbox.append(list)
+            });
+            //塞回畫面
+        }
+
+        //取得 localstorage資料
+        function getlocalstorage(key) {
+            let data = JSON.parse(localStorage.getItem(key));
+            return data;
+        }
+        function setlocalstorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data))
+
+        }
+
+        //新增list
+        function addlist() {
+
+            todotitle = title.value
+            if (todotitle.trim() != '') {
+                let data = getlocalstorage(key)
+                let ifff = new Date().getTime();
+                let obj =
+                {
+                    check: '',
+                    iD: ifff,
+                    text: title.value
+                }
+                array.push(obj)
+                localStorage.setItem(key, JSON.stringify(array))
+            }
+            else {
+                return
+            }
+            title.value = ''
+            renderToDoList()
+        }
+        //刪除
+        function removebtn(index) {
+            let data = getlocalstorage(key)
+            let num = data.indexOf(data.find(x => x.iD == index));
+            data.splice(num, 1)
+            setlocalstorage(key , data)
+            renderToDoList()
+        }
+        //編輯
+        function editbtn(index) {
+            let box = document.getElementById(`${index}`)
+            let editbtn = box.querySelector(".btn-edit")
+            editbtn.setAttribute("class", "d-none")
+            let savebtn = box.querySelector(".btn-save")
+            savebtn.classList.remove("d-none")
+            let inputlist = box.querySelector(".form-control")
+            inputlist.removeAttribute("disabled")
+            // d.disabled = false
+        }
+        //保存
+        function savebtn(index) {
+            let box = document.getElementById(`${index}`)   //取得最外層的div dom
+            let savebtn = box.querySelector(".btn-save")   //找到那個最外層裡面的保存按鈕
+            let inputlist = box.querySelector(".form-control").value.trim()   //找到那個最外層裡面的input
+            if (inputlist == '') {
+                return
+            }
+            let data = getlocalstorage(key)
+            let num = data.indexOf(data.find(x => x.iD == index))   //找到索引值
+            data[num].text = inputlist   //data是陣列包物件, 找到這個陣列裡面根據num的索引值找到物件裡面的text。
+            localStorage.setItem(key, JSON.stringify(data))  //設定localstorage
+            renderToDoList() //重新渲染
+        }
+        //check按鈕
+        function checkbtn(index) {
+            let box = document.getElementById(`${index}`)
+            let checkbox = box.querySelector(".form-check-input")
+            console.log(checkbox)
+            console.dir(checkbox)
+            let data = getlocalstorage(key)
+            let num = data.indexOf(data.find(x => x.iD == index))
+            // data[num].check = b.checked ? "checked" : ''
+            if (checkbox.checked == true) {
+                data[num].check = "checked"
+            }
+            else {
+                data[num].check = ''
+            }
+            setlocalstorage(key , data)
+            renderToDoList()
+        }
+        //enter事件
+        title.addEventListener("keypress", function (event) {
+            if (event.code == "Enter") {
+                addlist()
+            }
+        })
+        //事件
+        addBtn.addEventListener('click', function () {
+            addlist()
+        })
+        //window.onload
+        window.onload = function () {
+            renderToDoList()
+        }
+    </script>
+</body>
+
+</html>

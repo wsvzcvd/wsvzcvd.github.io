@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nice play</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        [box-id] {
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: none; */
+
+            transition: 0.3;
+            margin-top: 11px;
+            margin-bottom: 11px;
+        }
+
+        [box-id].active {
+            border: 3px solid pink;
+            box-shadow: 0 0 15px pink;
+            transition: 0s;
+        }
+
+        img {
+            aspect-ratio: 3/3;
+            width: 100%;
+            object-fit: cover;
+            border: 1px solid transparent;
+        }
+
+        .col-10 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #msg {
+            font-size: 36px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-1 " box-id="1"></div>
+            <div class="col-1" box-id="2"></div>
+            <div class="col-1" box-id="3"></div>
+            <div class="col-1" box-id="4"></div>
+            <div class="col-1" box-id="5"></div>
+            <div class="col-1" box-id="6"></div>
+            <div class="col-1" box-id="7"></div>
+            <div class="col-1" box-id="8"></div>
+            <div class="col-1" box-id="9"></div>
+            <div class="col-1" box-id="10"></div>
+            <div class="col-1" box-id="11"></div>
+            <div class="col-1" box-id="12"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="32"></div>
+            <div class="col-10"></div>
+            <div class="col-1" box-id="13"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="31"></div>
+            <div class="col-10">與你相遇の那天</div>
+            <div class="col-1" box-id="14"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="30"></div>
+            <div class="col-10"><button type="button" class="btn btn-outline-danger" id="startbtn">開始尋找喜翻的女森</button>
+            </div>
+            <div class="col-1" box-id="15"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="29"></div>
+            <div class="col-10"></div>
+            <div class="col-1" box-id="16"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="28"></div>
+            <div class="col-1" box-id="27"></div>
+            <div class="col-1" box-id="26"></div>
+            <div class="col-1" box-id="25"></div>
+            <div class="col-1" box-id="24"></div>
+            <div class="col-1" box-id="23"></div>
+            <div class="col-1" box-id="22"></div>
+            <div class="col-1" box-id="21"></div>
+            <div class="col-1" box-id="20"></div>
+            <div class="col-1" box-id="19"></div>
+            <div class="col-1" box-id="18"></div>
+            <div class="col-1" box-id="17"></div>
+        </div>
+    </div>
+    <!-- <button class="modalbut" data-bs-target="#exampleModal" data-bs-toggle="modal">123</button> -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">IG:自己找</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="" id="modal-img">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        //宣告
+        let goddess = [
+            {
+                id: '1',
+                color: '#edede9',
+                imgUrl: '林襄.jpg'
+            },
+            {
+                id: '2',
+                color: '#d6ccc2',
+                imgUrl: '李多慧.jpg'
+            },
+            {
+                id: '3',
+                color: '#f5ebe0',
+                imgUrl: '品子.jpg'
+            },
+            {
+                id: '4',
+                color: '#e3d5ca',
+                imgUrl: '張語芯.jpg'
+            },
+            {
+                id: '5',
+                color: '#d5bdaf',
+                imgUrl: '岱縈.jpg'
+            },
+            {
+                id: '6',
+                color: '#d4a373',
+                imgUrl: '籃籃.jpg'
+            },
+            {
+                id: '7',
+                color: '#faedcd',
+                imgUrl: '琳妲.jpg'
+            },
+            {
+                id: '8',
+                color: '#fefae0',
+                imgUrl: '泱泱.webp'
+            },
+            {
+                id: '9',
+                color: '#e9edc9',
+                imgUrl: '溫妮.jpg'
+            },
+            {
+                id: '10',
+                color: '#ccd5ae',
+                imgUrl: '孟潔.jpg'
+            },
+            {
+                id: '11',
+                color: '#edede9',
+                imgUrl: '卉妮.jpg'
+            },
+            {
+                id: '12',
+                color: '#d6ccc2',
+                imgUrl: 'Yuri.webp'
+            },
+            {
+                id: '13',
+                color: '#f5ebe0',
+                imgUrl: '菲菲.jpg'
+            },
+            {
+                id: '14',
+                color: '#e3d5ca',
+                imgUrl: '若潼.jpeg'
+            },
+            {
+                id: '15',
+                color: '#d5bdaf',
+                imgUrl: '筠熹陳伊.webp'
+            },
+            {
+                id: '16',
+                color: '#d4a373',
+                imgUrl: '穎樂.jpg'
+            }
+
+        ]
+        let steps = 0; //剩餘的步數
+        let allsteps = 0; //全部的步數
+        let currentIndex = 0; //目前走到哪一格
+        let speed; //速率(越大代表越慢)
+        let myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+            keyboard: false
+        })
+
+        //DOM
+        let bricks = document.querySelectorAll('[box-id]')
+
+        //方法
+        function render() {
+            bricks = Array.from(bricks).sort((a, b) => {
+                return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value
+            });
+            bricks.forEach((x, index) => {
+                let id = (index + 1) % 16 != 0 ? (index + 1) % 16 : 16;
+                // let id = index + 1
+                let data = goddess.find(x => x.id == id);
+                let img = document.createElement('img')
+                img.src = data.imgUrl
+                x.append(img);
+
+            })
+        }
+        function turnAround() {
+            bricks[currentIndex].classList.remove('active');
+            currentIndex++;
+
+            if (currentIndex >= bricks.length) {
+                currentIndex = 0;
+            }
+
+            bricks[currentIndex].classList.add('active');
+            steps--;
+            if (steps > 0) {
+                setTimeout(turnAround, speed);
+                
+            }
+            else {
+                let img = bricks[currentIndex].childNodes[0].src
+                let modalimg = document.getElementById('modal-img')
+                modalimg.src = img
+                myModal.show();
+            }
+        }
+        //事件
+        document.getElementById('startbtn').addEventListener('click', function () {
+            speed = 50;
+            let random = Math.floor(Math.random() * goddess.length) + 1;
+            steps = random + (3 * goddess.length);
+            allsteps = steps;
+            turnAround()
+        })
+
+        //window.onload
+        window.onload = function () {
+            render()
+        }
+    </script>
+</body>
+
+</html>
