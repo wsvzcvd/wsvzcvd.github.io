@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sugoi demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="sugoi.css">
+
+</head>
+
+
+<body>
+  <header class="homepage-main-header mt-4 mb-4">
+    <div class="container">
+      <!-- header-search列 -->
+      <div class="d-flex align-items-center">
+        <div class="logo"><a href="#"><img class="w-100" src="sugoiimg/Logo.svg" alt=""></a></div>
+        <div class="header-search me-auto">
+          <div class="header-search-form">
+            <form v-on:submit.prevent="search" class="d-flex " role="search">
+              <input type="text" class="form-control" placeholder="搜尋好設計、商品" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+              <button class="btn btn-outline-secondary" type="submit">搜尋</button>
+            </form>
+          </div>
+          <div class="homepage-search-keyword">
+            <ul class="search-hot">
+              <li class="search-hot-items"><a href="#">日本</a></li>
+              <li class="search-hot-items"><a href="#">手作</a></li>
+              <li class="search-hot-items"><a href="#">環保杯</a></li>
+              <li class="search-hot-items"><a href="#">辦公室</a></li>
+              <li class="search-hot-items"><a href="#">手錶</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="header-right-inner">
+          <a href="#">我想在Pinkoi上販售</a>
+          <button type="button" class="btn btn-outline-secondary">登入/註冊</button>
+          <a href=""><img src="sugoiimg/shopicon.svg" alt=""></a>
+          <a href=""><img src="sugoiimg/Pcoin.svg" alt=""></a>
+        </div>
+      </div>
+    </div>
+    <!-- 主題下拉選單 -->
+    <nav class="container homepage-category-nav-pc">
+      <div class="row dropdown-group">
+        <ul class="nav-group">
+          <li class="nav-items">
+            <a href="#">
+              <h1>主題企劃</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">sugoi X 台北市立動物園 未來動物園</a></li>
+              <li class="nav-items-container-category"><a href="#">sugoi 送禮指南 ｜ 生日、七夕、男友禮</a></li>
+              <li class="nav-items-container-category"><a href="#">海外好設計｜夏日穿搭不撞款!</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>配件飾品</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">飾品</a></li>
+              <li class="nav-items-container-category"><a href="#">頭飾</a></li>
+              <li class="nav-items-container-category"><a href="#">眼鏡/太陽眼鏡</a></li>
+              <li class="nav-items-container-category"><a href="#">手錶</a></li>
+              <li class="nav-items-container-category"><a href="#">卡套/吊飾</a></li>
+              <li class="nav-items-container-category"><a href="#">其他配件</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>包包提袋</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">人氣精選</a></li>
+              <li class="nav-items-container-category"><a href="#">日常包款</a></li>
+              <li class="nav-items-container-category"><a href="#">錢包</a></li>
+              <li class="nav-items-container-category"><a href="#">上班/通勤包</a></li>
+              <li class="nav-items-container-category"><a href="#">收納包/行李箱</a></li>
+              <li class="nav-items-container-category"><a href="#">其他包包提袋</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>居家生活</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">人氣精選</a></li>
+              <li class="nav-items-container-category"><a href="#">家飾佈置</a></li>
+              <li class="nav-items-container-category"><a href="#">水壺/保溫瓶</a></li>
+              <li class="nav-items-container-category"><a href="#">雜貨</a></li>
+              <li class="nav-items-container-category"><a href="#">居家織品</a></li>
+              <li class="nav-items-container-category"><a href="#">居家清潔</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>品味美食</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">人氣精選</a></li>
+              <li class="nav-items-container-category"><a href="#">飲品/沖泡類</a></li>
+              <li class="nav-items-container-category"><a href="#">烘培食品</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>創意科技</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">人氣精選</a></li>
+              <li class="nav-items-container-category"><a href="#">手機平板週邊</a></li>
+              <li class="nav-items-container-category"><a href="#">電腦週邊</a></li>
+              <li class="nav-items-container-category"><a href="#">相機/影像器材</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>美妝保養</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">美妝保養夯話題</a></li>
+              <li class="nav-items-container-category"><a href="#">保養品</a></li>
+              <li class="nav-items-container-category"><a href="#">清潔用品</a></li>
+              <li class="nav-items-container-category"><a href="#">化妝品</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>群眾募資</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">募資</a></li>
+              <li class="nav-items-container-category"><a href="#">頭飾</a></li>
+              <li class="nav-items-container-category"><a href="#">眼鏡/太陽眼鏡</a></li>
+              <li class="nav-items-container-category"><a href="#">手錶</a></li>
+              <li class="nav-items-container-category"><a href="#">卡套/吊飾</a></li>
+              <li class="nav-items-container-category"><a href="#">其他配件飾品</a></li>
+            </ul>
+          </li>
+          <li class="nav-items"><a href="#">
+              <h1>所有分類</h1>
+            </a>
+            <ul class="nav-items-container">
+              <li class="nav-items-container-category"><a href="#">所有分類</a></li>
+              <li class="nav-items-container-category"><a href="#">頭飾</a></li>
+              <li class="nav-items-container-category"><a href="#">眼鏡/太陽眼鏡</a></li>
+              <li class="nav-items-container-category"><a href="#">手錶</a></li>
+              <li class="nav-items-container-category"><a href="#">卡套/吊飾</a></li>
+              <li class="nav-items-container-category"><a href="#">其他配件飾品</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="pf-container">
+    <!-- 麵包屑 -->
+    <div class="pr-breadcrumb container">
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">配件飾品</a></li>
+        </ol>
+      </nav>
+    </div>
+    <!-- 主要篩選畫面 -->
+    <div class="container  main-commodity-container">
+      <div class="df-filter-block row">
+        <div class="pf-product-filter col-lg-3">
+          <!--商品分類-->
+          <div class="pf-category">
+            <h2>商品分類</h2>
+            <h3 class="pf-category-list-title">配件飾品</h3>
+            <ul class="pf-category-list">
+              <li><a href="#">飾品</a></li>
+              <li><a href="#">頭飾</a></li>
+              <li><a href="#">眼鏡/太陽眼鏡</a></li>
+              <li><a href="#">手錶</a></li>
+              <li><a href="#">卡套/吊飾</a></li>
+              <li><a href="#">其他配件飾品</a></li>
+            </ul>
+          </div>
+          <!--篩選欄-->
+          <div class="pf-filter">
+            <h2>篩選</h2>
+            <!-- 篩選金額 -->
+            <div class="pf-filter-price">
+              <h3>金額</h3>
+              <div class="pf-filter-selections">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    NT$500 - 1,000
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    NT$1,000 - 2,000
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    NT$2,000 - 2,500
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    NT$2,500 - 5,000
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    NT$5,000 以上
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!--材質-->
+            <div class="pf-filter-material">
+              <h3>材質</h3>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  其他金屬
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  其他材質
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  純銀
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  棉 ‧ 麻
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  寶石
+                </label>
+              </div>
+            </div>
+            <!--免運-->
+            <div class="pf-filter-free-transport">
+              <h3>免運</h3>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  只顯示免運商品
+                </label>
+              </div>
+            </div>
+            <!--客製服務-->
+            <div class="pf-filter-customized">
+              <h3>客製服務</h3>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  只顯示可客製化商品
+                </label>
+              </div>
+            </div>
+            <!-- 篩選時間 -->
+            <div class="pf-filter-datetime">
+              <h3>上架時間</h3>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  一週內
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  一個月內
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  三個月內
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  一年內
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 商品們顯示處 -->
+        <div class="pf-display-products col-lg-9">
+          <!-- 商品顯示上方排序處 -->
+          <div class="pf-filter-text">
+            <div class="pf-filter-info d-flex justify-content-between align-content-center">
+              <!-- 顯示幾件商品 -->
+              <div class="pf-products-qty">
+                <p>
+                  <span>4</span>
+                  件
+                  <span>配件飾品</span>
+                  商品
+                </p>
+              </div>
+              <!-- 排序熱門程度優先 -->
+              <div class="pf-product-sub-filter d-flex align-items-center">
+                <span class="text-nowrap">排序</span>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>熱門程度優先</option>
+                  <option value="1">最新上架優先</option>
+                  <option value="2">價格由高至低</option>
+                  <option value="3">價格由低至高</option>
+                </select>
+              </div>
+            </div>
+            <!-- 客戶篩選出的按鈕 -->
+            <div class="pf-filter-tags">
+              <button type="button" class="btn btn-outline-danger">
+                <span>
+                  送禮推薦
+                </span>
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <!-- 卡片們 -->
+          <div class="pf-products container mt-4">
+            <div class="pf-products-row row products-row">
+              <!-- 一個卡片 -->
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+              <div class="pf-products-col col-lg-3">
+                <div class="pf-products-card products-card">
+                  <div class="products-pic">
+                    <a href="#"><img class="card-img" src="sugoiimg/黑貓.jpg"></a>
+                    <div class="product-badge-free">
+                      免運
+                    </div>
+                    <div class="product-badge-hot">
+                      HOT
+                    </div>
+                    <button type="button" class="img-love-btn"><i class="fa-regular fa-heart"></i></button>
+                  </div>
+                  <div class="products-text">
+                    <h3>
+                      <a href="#">小眾設計大容量帆布包</a>
+                    </h3>
+                    <a href="#">佳駿品牌</a>
+                  </div>
+                  <div class="products-price">
+                    <span>NT$2</span>
+                  </div>
+                  <div class="product-badge"><span>可客製</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--pagination-->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
